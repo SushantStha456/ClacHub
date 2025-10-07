@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import AdminPanel from './pages/AdminPanel';
+import AdminPanel from './pages/AdminPanelNew';
 import BMICalculator from './calculators/BMICalculator';
 import AgeCalculator from './calculators/AgeCalculator';
 import FinancialCalculator from './calculators/FinancialCalculator';
@@ -51,20 +52,22 @@ function App() {
       case 'investment':
         return <FinancialCalculator />;
       case 'admin':
-        return <AdminPanel />;
+        return <AdminPanel onNavigateHome={() => handleNavigate('home')} />;
       default:
         return <Home onNavigate={handleNavigate} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {currentPage !== 'admin' && (
-        <Header currentPage={currentPage} onNavigate={handleNavigate} />
-      )}
-      <main className="flex-grow">{renderPage()}</main>
-      {currentPage !== 'admin' && <Footer />}
-    </div>
+    <AuthProvider>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        {currentPage !== 'admin' && (
+          <Header currentPage={currentPage} onNavigate={handleNavigate} />
+        )}
+        <main className="flex-grow">{renderPage()}</main>
+        {currentPage !== 'admin' && <Footer />}
+      </div>
+    </AuthProvider>
   );
 }
 
