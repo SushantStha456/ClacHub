@@ -23,7 +23,7 @@ export default function FinancialCalculator() {
     const r = parseFloat(rate) / 100 / 12;
     const n = parseFloat(time) * 12;
 
-    if (!p || !r || !n || p <= 0 || rate <= 0 || n <= 0) {
+    if (!p || !r || !n || p <= 0 || r <= 0 || n <= 0) {
       alert('Please enter valid values');
       return;
     }
@@ -53,7 +53,7 @@ export default function FinancialCalculator() {
     const t = parseFloat(time);
     const pmt = parseFloat(monthlyPayment);
 
-    if (!p || !r || !t || p < 0 || rate <= 0 || t <= 0) {
+    if (!p || !r || !t || p < 0 || r <= 0 || t <= 0) {
       alert('Please enter valid values');
       return;
     }
@@ -90,7 +90,7 @@ export default function FinancialCalculator() {
     const r = parseFloat(rate) / 100;
     const t = parseFloat(time);
 
-    if (!p || !r || !t || p <= 0 || rate <= 0 || t <= 0) {
+    if (!p || !r || !t || p <= 0 || r <= 0 || t <= 0) {
       alert('Please enter valid values');
       return;
     }

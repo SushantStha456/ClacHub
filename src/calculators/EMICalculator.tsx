@@ -19,7 +19,7 @@ export default function EMICalculator() {
     const r = parseFloat(interestRate) / 100 / 12;
     const n = tenureType === 'years' ? parseFloat(loanTenure) * 12 : parseFloat(loanTenure);
 
-    if (!p || !r || !n || p <= 0 || interestRate <= 0 || n <= 0) {
+    if (!p || !r || !n || p <= 0 || r <= 0 || n <= 0) {
       alert('Please enter valid values');
       return;
     }

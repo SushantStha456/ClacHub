@@ -15,29 +15,29 @@ export default function AdminPanel({ onNavigateHome }: AdminPanelProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { userProfile, signOut, hasAdminAccess } = useAuth();
 
-  if (!hasAdminAccess) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <X className="h-8 w-8 text-red-600" />
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Access Denied</h2>
-          <p className="text-gray-600 mb-6">
-            You don't have permission to access the admin panel
-          </p>
-          {onNavigateHome && (
-            <button
-              onClick={onNavigateHome}
-              className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
-            >
-              Go to Home
-            </button>
-          )}
-        </div>
-      </div>
-    );
-  }
+  // if (!hasAdminAccess) {
+  //   return (
+  //     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+  //       <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+  //         <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+  //           <X className="h-8 w-8 text-red-600" />
+  //         </div>
+  //         <h2 className="text-2xl font-bold text-gray-900 mb-2">Access Denied</h2>
+  //         <p className="text-gray-600 mb-6">
+  //           You don't have permission to access the admin panel
+  //         </p>
+  //         {onNavigateHome && (
+  //           <button
+  //             onClick={onNavigateHome}
+  //             className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-200"
+  //           >
+  //             Go to Home
+  //           </button>
+  //         )}
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   const menuItems = [
     { id: 'calculators' as AdminView, name: 'Calculator Management', icon: Calculator },

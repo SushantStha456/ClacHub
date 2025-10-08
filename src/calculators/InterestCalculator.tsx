@@ -21,7 +21,7 @@ export default function InterestCalculator() {
     const r = parseFloat(rate) / 100;
     const t = parseFloat(time);
 
-    if (!p || !r || !t || p <= 0 || rate <= 0 || t <= 0) {
+    if (!p || !r || !t || p <= 0 || r <= 0 || t <= 0) {
       alert('Please enter valid values');
       return;
     }

@@ -10,6 +10,7 @@ import AgeCalculator from './calculators/AgeCalculator';
 import FinancialCalculator from './calculators/FinancialCalculator';
 import EMICalculator from './calculators/EMICalculator';
 import InterestCalculator from './calculators/InterestCalculator';
+import CalculatorDetail from './app/features/calculators/calculator-detail/CalculatorDetail';
 
 type Page = 'home' | 'about' | 'bmi' | 'age' | 'emi' | 'interest' | 'investment' | 'admin';
 
@@ -20,6 +21,9 @@ function App() {
     const path = window.location.pathname;
     if (path === '/admin') {
       setCurrentPage('admin');
+    } else if (path && path !== '/') {
+      const slug = path.startsWith('/') ? path.slice(1) : path;
+      setCurrentPage(slug as Page);
     }
   }, []);
 
@@ -28,8 +32,12 @@ function App() {
 
     if (page === 'admin') {
       window.history.pushState({}, '', '/admin');
-    } else {
+    } else if (
+      page === 'home' || page === 'about' || page === 'bmi' || page === 'age' || page === 'emi' || page === 'interest' || page === 'investment'
+    ) {
       window.history.pushState({}, '', '/');
+    } else {
+      window.history.pushState({}, '', `/${page}`);
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -54,7 +62,7 @@ function App() {
       case 'admin':
         return <AdminPanel onNavigateHome={() => handleNavigate('home')} />;
       default:
-        return <Home onNavigate={handleNavigate} />;
+        return <CalculatorDetail slug={currentPage} />;
     }
   };
 
